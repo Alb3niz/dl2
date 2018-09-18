@@ -1,11 +1,13 @@
 import React, {Component} from 'react'
 import {View} from 'react-native'
 import {ResponsiveComponent, ResponsiveStyleSheet} from 'react-native-responsive-ui'
+import DrugController from '../Controllers/DrugController'
 
 export default class Main extends ResponsiveComponent {
   render(){
     const {style} = this
     const {width, height} = this.state.window
+    console.log('Drug List is: ', DrugController.drugList)
 
     return(
 
