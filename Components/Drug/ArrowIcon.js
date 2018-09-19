@@ -1,8 +1,8 @@
 import React from 'react'
-import {Text} from 'react-native'
+import {Image} from 'react-native'
 import {ResponsiveComponent, ResponsiveStyleSheet} from 'react-native-responsive-ui'
 
-export default class DrugInfoText extends ResponsiveComponent {
+export default class ArrowIcon extends ResponsiveComponent {
   constructor(props) {
     super(props)
   }
@@ -10,7 +10,7 @@ export default class DrugInfoText extends ResponsiveComponent {
   render() {
     const {style} = this
     const {width, height} = this.state.window
-    return <Text style={style.text} text={this.props.text}/>
+    return <Image style={style.responsiveImage} source={this.props.source}/>
   }
 
   get style() {
@@ -20,8 +20,10 @@ export default class DrugInfoText extends ResponsiveComponent {
           minHeight: 650
         },
         style: {
-          text: {
-            fontSize:16
+          responsiveImage: {
+            alignSelf: 'center',
+            width:35,
+            height:35,
           }
         }
       }, {
@@ -29,9 +31,10 @@ export default class DrugInfoText extends ResponsiveComponent {
           maxHeight: 650
         },
         style: {
-          text: {
+          responsiveImage: {
             alignSelf: 'center',
-            fontSize:14
+            width:50,
+            height:50,
           }
         }
       }
