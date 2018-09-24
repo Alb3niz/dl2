@@ -21,9 +21,8 @@ export default class ArrowIcon extends ResponsiveComponent {
         },
         style: {
           responsiveImage: {
-            alignSelf: 'center',
-            width:35,
-            height:35,
+            width:25,
+            height:25,
           }
         }
       }, {
@@ -32,9 +31,8 @@ export default class ArrowIcon extends ResponsiveComponent {
         },
         style: {
           responsiveImage: {
-            alignSelf: 'center',
-            width:50,
-            height:50,
+            width:15,
+            height:15,
           }
         }
       }

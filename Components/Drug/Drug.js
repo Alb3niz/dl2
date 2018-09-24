@@ -16,23 +16,23 @@ export default class Drug extends ResponsiveComponent {
     const {width, height} = this.state.window
     return <View style={style.container}>
       <View style={style.drugIcon}>
-        <DrugIcon/>
+        <DrugIcon source={this.props.drug.icon}/>
       </View>
 
       <View style={style.drugName}>
-        <DrugInfoText text={this.props.drugName}/>
+        <DrugInfoText text={this.props.drug.name}/>
       </View>
 
       <View style={style.drugQuantity}>
-        <DrugInfoText text={this.props.drugQuantity}/>
+        <DrugInfoText text={this.props.drug.quantity}/>
       </View>
 
       <View style={style.drugPrice}>
-        <DrugInfoText text={this.props.drugPrice}/>
+        <DrugInfoText text={this.props.drug.price}/>
       </View>
 
       <View style={style.arrow}>
-        <ArrowIcon text={this.props.arrow}/>
+        <ArrowIcon source={this.props.drug.arrow}/>
       </View>
 
     </View>
@@ -46,18 +46,16 @@ export default class Drug extends ResponsiveComponent {
         },
         style: {
           container: {
-            backgroundColor:'red',
             width:'100%',
-            height:50,
             flexDirection:'row',
             justifyContent:'space-evenly',
-            alignItems:'center'
+            alignItems:'center',
+            marginTop:2
           },
           drugIcon:{
             backgroundColor:'powderblue',
             height:50,
-            width:'15%',
-            flexDirection:'row',
+            width:'10%',
             justifyContent:'center',
             alignItems:'center'
           },
@@ -72,7 +70,7 @@ export default class Drug extends ResponsiveComponent {
           drugQuantity:{
             backgroundColor:'powderblue',
             height:50,
-            width:'15%',
+            width:'20%',
             flexDirection:'row',
             justifyContent:'center',
             alignItems:'center'
@@ -80,7 +78,7 @@ export default class Drug extends ResponsiveComponent {
           drugPrice:{
             backgroundColor:'steelblue',
             height:50,
-            width:'15%',
+            width:'20%',
             flexDirection:'row',
             justifyContent:'center',
             alignItems:'center'
@@ -88,7 +86,7 @@ export default class Drug extends ResponsiveComponent {
           arrow:{
             backgroundColor:'powderblue',
             height:50,
-            width:'15%',
+            width:'10%',
             flexDirection:'row',
             justifyContent:'center',
             alignItems:'center'

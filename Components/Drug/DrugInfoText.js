@@ -10,7 +10,7 @@ export default class DrugInfoText extends ResponsiveComponent {
   render() {
     const {style} = this
     const {width, height} = this.state.window
-    return <Text style={style.text} text={this.props.text}/>
+    return <Text style={style.text}>{this.props.text}</Text>
   }
 
   get style() {
@@ -21,7 +21,8 @@ export default class DrugInfoText extends ResponsiveComponent {
         },
         style: {
           text: {
-            fontSize:16
+            fontSize:16,
+            color:'black'
           }
         }
       }, {

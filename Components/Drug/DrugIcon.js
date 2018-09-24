@@ -21,9 +21,8 @@ export default class DrugIcon extends ResponsiveComponent {
         },
         style: {
           responsiveImage: {
-            alignSelf: 'center',
-            width:65,
-            height:65,
+            width:30,
+            height:30,
           }
         }
       }, {
@@ -32,9 +31,8 @@ export default class DrugIcon extends ResponsiveComponent {
         },
         style: {
           responsiveImage: {
-            alignSelf: 'center',
-            width:50,
-            height:50,
+            width:25,
+            height:25,
           }
         }
       }

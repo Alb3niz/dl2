@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {View, KeyboardAvoidingView, TextInput, Text} from 'react-native'
+import {View, KeyboardAvoidingView, TextInput, Text, ScrollView} from 'react-native'
 import {ResponsiveComponent, ResponsiveStyleSheet} from 'react-native-responsive-ui'
 import DrugController from '../Controllers/DrugController'
 import Drug from '../Drug/Drug'
@@ -13,7 +13,8 @@ export default class Main extends ResponsiveComponent {
   renderDrugList(){
     drugList = DrugController.drugList
     return drugList.map(function(drug, index){
-      return <Drug key={index} drugIcon={drug.icon} drugName={drug.name} drugQuantity={drug.quantity} drugPrice={drug.price} arrow={drug.arrow}/>
+      console.log('Drug: ',index, drug.name, drug.arrow)
+      return <Drug key={index} drug={drug}/>
     }.bind(this))
   }
 
@@ -24,9 +25,9 @@ export default class Main extends ResponsiveComponent {
     return(
       <KeyboardAvoidingView behavior="padding" enabled>
       <View style={style.mainView}>
-        <View style={style.drugList}>
+        <ScrollView style={style.drugList}>
           {this.renderDrugList()}
-        </View>
+        </ScrollView>
       </View>
     </KeyboardAvoidingView>
     )
@@ -40,7 +41,7 @@ export default class Main extends ResponsiveComponent {
         },
         style: {
           mainView:{
-            height:'50%',
+            height:'100%',
             width:'100%',
             backgroundColor:'skyblue',
             justifyContent:'center',
@@ -48,10 +49,11 @@ export default class Main extends ResponsiveComponent {
             flexDirection:'column'
           },
           drugList:{
-            justifyContent:'flex-start',
+            borderWidth:1,
+            borderColor:'black',
             flexDirection:'column',
             width:'100%',
-            alignItems:'center'
+            height:'50%'
           }
         }
       }, {
