@@ -3,22 +3,35 @@ import {View, KeyboardAvoidingView, TextInput, Text, ScrollView} from 'react-nat
 import {ResponsiveComponent, ResponsiveStyleSheet} from 'react-native-responsive-ui'
 import DrugController from '../Controllers/DrugController'
 import Drug from '../Drug/Drug'
+import BuyingDialog from '../BuyingDialog/BuyingDialog'
 
 export default class Main extends ResponsiveComponent {
 
+  state = {
+    buyDrugDialog: false
+  }
   constructor(props) {
     super(props)
   }
+
+  renderBuyDrugDialog(drug){
+    if(this.state.buyDrugDialog){
+      return <BuyingDialog />
+    }
+  }
+  showDialog(){this.setState({buyDrugDialog: true})}
+  hideDialog(){this.setState({buyDrugDialog: false})}
 
   renderDrugList(){
     drugList = DrugController.drugList
     return drugList.map(function(drug, index){
       console.log('Drug: ',index, drug.name, drug.arrow)
-      return <Drug key={index} drug={drug}/>
+      return <Drug key={index} drug={drug} onPress={() => console.log(drug.name, ' costs ', drug.price, ' per unit.')}/>
     }.bind(this))
   }
 
   render(){
+    console.log('dasdasdasdasdasd')
     const {style} = this
     const {width, height} = this.state.window
 
