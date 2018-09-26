@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {View, Text} from 'react-native'
+import {View, Text, TouchableOpacity} from 'react-native'
 import {ResponsiveComponent, ResponsiveStyleSheet} from 'react-native-responsive-ui'
 
 export default class BuyingDialog extends ResponsiveComponent {
@@ -11,9 +11,9 @@ export default class BuyingDialog extends ResponsiveComponent {
     const {style} = this
     const {width, height} = this.state.window
     return (
-      <View style={style.dialogContainer}>
+      <TouchableOpacity style={style.dialogContainer} onPress={this.props.onPress}>
         <Text>This is a dialog</Text>
-      </View>
+      </TouchableOpacity>
     )
   }
   get style() {
@@ -25,11 +25,13 @@ export default class BuyingDialog extends ResponsiveComponent {
         style: {
           dialogContainer: {
             backgroundColor:'white',
-            borderRadius:5,
+            borderRadius:6,
             width:'80%',
             flexDirection:'column',
             justifyContent:'space-evenly',
             alignItems:'center',
+            position:'absolute',
+            zIndex:1
           }
         }
       }, {

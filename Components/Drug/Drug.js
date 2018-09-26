@@ -1,5 +1,5 @@
 import React from 'react'
-import {TextInput, View} from 'react-native'
+import {TextInput, View, TouchableOpacity} from 'react-native'
 import {ResponsiveComponent, ResponsiveStyleSheet} from 'react-native-responsive-ui'
 import DrugIcon from './DrugIcon'
 import DrugInfoText from './DrugInfoText'
@@ -14,7 +14,7 @@ export default class Drug extends ResponsiveComponent {
   render() {
     const {style} = this
     const {width, height} = this.state.window
-    return <View style={style.container}>
+    return <TouchableOpacity style={style.container} onPress={this.props.onPress}>
       <View style={style.drugIcon}>
         <DrugIcon source={this.props.drug.icon}/>
       </View>
@@ -35,7 +35,7 @@ export default class Drug extends ResponsiveComponent {
         <ArrowIcon source={this.props.drug.arrow}/>
       </View>
 
-    </View>
+    </TouchableOpacity>
   }
 
   get style() {
