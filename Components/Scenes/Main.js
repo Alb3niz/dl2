@@ -33,6 +33,7 @@ export default class Main extends ResponsiveComponent {
         name={this.selectedDrug.name}
         price={this.selectedDrug.price}
         quantity={this.selectedDrug.quantity}
+        onBuyClicked={() => this.hideDialog()}
         onPress={() => this.hideDialog()}/>
     }
   }
@@ -66,6 +67,9 @@ export default class Main extends ResponsiveComponent {
         <ScrollView style={styles.drugList}>
           {this.renderDrugList()}
         </ScrollView>
+        <ScrollView style={styles.stash}>
+
+        </ScrollView>
       </View>
     </KeyboardAvoidingView>
     )
@@ -76,14 +80,21 @@ const styles = {
   mainView:{
     height:'100%',
     width:'100%',
-    backgroundColor:'skyblue',
+    backgroundColor:'#d3d3d3',
     justifyContent:'center',
     alignItems:'center',
     flexDirection:'column'
   },
   drugList:{
+    backgroundColor:'#6890b4',
     flexDirection:'column',
     width:'100%',
-    height:'50%'
+    height:'40%'
+  },
+  stash:{
+    backgroundColor:'#f0b1ff',
+    flexDirection:'column',
+    width:'100%',
+    height:'40%'
   }
 }
