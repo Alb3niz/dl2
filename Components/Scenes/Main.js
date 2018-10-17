@@ -26,7 +26,7 @@ export default class Main extends ResponsiveComponent {
     super(props)
   }
 
-  renderDialog(drug){
+  renderDialog(drug, index){
     if(this.state.dialogShown){
       return <BuyingDialog
         icon={this.selectedDrug.icon}
@@ -37,7 +37,6 @@ export default class Main extends ResponsiveComponent {
         onPress={() => this.hideDialog()}/>
     }
   }
-
   showDialog(drug){
     this.selectedDrug.icon = drug.icon
     this.selectedDrug.name = drug.name
@@ -46,7 +45,6 @@ export default class Main extends ResponsiveComponent {
     this.setState({dialogShown: true})
     // console.log('Changing dialog to: ', this.state.dialogShown)
   }
-
   hideDialog(){
     this.setState({dialogShown: false})
     // console.log('Changing dialog to: ', this.state.dialogShown)
@@ -55,9 +53,10 @@ export default class Main extends ResponsiveComponent {
   renderDrugList(){
     drugList = DrugController.drugList
     return drugList.map(function(drug, index){
-      return <Drug key={index} drug={drug} onPress={() => this.showDialog(drug)}/>
+      return <Drug key={index} drug={drug} onPress={() => this.showDialog(drug, index)}/>
     }.bind(this))
   }
+
 
   render(){
     return(

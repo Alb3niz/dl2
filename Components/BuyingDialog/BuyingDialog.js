@@ -3,6 +3,7 @@ import {View, Text, TouchableOpacity, Image} from 'react-native'
 import {ResponsiveComponent, ResponsiveStyleSheet} from 'react-native-responsive-ui'
 import Slider from 'react-native-slider'
 import Button from './Button'
+import DrugController from '../Controllers/DrugController'
 
 export default class BuyingDialog extends ResponsiveComponent {
 
@@ -11,9 +12,9 @@ export default class BuyingDialog extends ResponsiveComponent {
   }
 
   values = {
-    value: 0,
+    quantityToBuy: 0,
     drugPrice: this.props.price,
-    get priceToPay(){return this.drugPrice * this.value}
+    get priceToPay(){return this.drugPrice * this.quantityToBuy}
   }
 
   quantityToBuy = 0
@@ -34,33 +35,34 @@ export default class BuyingDialog extends ResponsiveComponent {
         </View>
 
         <View style={style.two}>
-          <Text>Available: {this.props.price}</Text>
-          <Text>Price: {this.props.quantity}</Text>
+          <Text>Available: {this.props.quantity}</Text>
+          <Text>Price: {this.props.price}</Text>
         </View>
 
         <View style={style.three}>
           <Slider
+            value={this.values.quantityToBuy}
             trackStyle={style.sliderTrackStyle}
             thumbStyle={style.sliderThumbStyle}
             minimumTrackTintColor='#eecba8'
-            value={this.values.value}
             minimumValue={0}
             maximumValue={this.props.quantity}
             step={1}
-            onValueChange={value => {
-              this.values.value = value
-              console.log('PRICE TO PAY: ', this.priceToPay)
+            onValueChange={quantityToBuy => {
+              this.values.quantityToBuy = quantityToBuy
               this.setState({change: true})
             }}/>
           </View>
 
           <View style={style.four}>
-            <Text>To Buy: {this.values.value}</Text>
+            <Text>To Buy: {this.values.quantityToBuy}</Text>
             <Text>To Pay: {this.values.priceToPay}</Text>
           </View>
 
           <View style={style.five}>
-            <Button text='Buy' onPress={this.props.onBuyClicked}/>
+            <Button
+              text='Buy'
+              onPress={this.props.onBuyClicked}/>
           </View>
 
       </View>
