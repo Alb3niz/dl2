@@ -32,6 +32,7 @@ export default class BuyingDialog extends ResponsiveComponent {
         <View style={style.one}>
           <Image source={this.props.icon} style={{height: 25,width: 25}}/>
           <Text>{this.props.name}</Text>
+          <Text>{this.props.index}</Text>
         </View>
 
         <View style={style.two}>
@@ -62,7 +63,7 @@ export default class BuyingDialog extends ResponsiveComponent {
           <View style={style.five}>
             <Button
               text='Buy'
-              onPress={this.props.onBuyClicked}/>
+              onPress={()=>this.props.onBuyClicked(this.props.index, this.values.quantityToBuy, this.values.priceToPay)}/>
           </View>
 
       </View>

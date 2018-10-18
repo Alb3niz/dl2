@@ -12,38 +12,41 @@ export default class Main extends ResponsiveComponent {
   }
 
   selectedDrug = {
+    index:'',
     icon:'',
     name:'',
     quantity:'',
     price:''
   }
 
-  componentDidMount(){
-    // console.log('Dialog Shown is: ', this.state.dialogShown)
-  }
-
   constructor(props) {
     super(props)
+  }
+
+  doSomething(index, amountToBuy, totalPrice){
+    DrugController.buyDrug(index, amountToBuy, totalPrice)
+    this.hideDialog()
   }
 
   renderDialog(drug, index){
     if(this.state.dialogShown){
       return <BuyingDialog
+        index={this.selectedDrug.index}
         icon={this.selectedDrug.icon}
         name={this.selectedDrug.name}
         price={this.selectedDrug.price}
         quantity={this.selectedDrug.quantity}
-        onBuyClicked={() => this.hideDialog()}
+        onBuyClicked={this.doSomething.bind(this)}
         onPress={() => this.hideDialog()}/>
     }
   }
-  showDialog(drug){
+  showDialog(drug, index){
+    this.selectedDrug.index = index
     this.selectedDrug.icon = drug.icon
     this.selectedDrug.name = drug.name
     this.selectedDrug.quantity = drug.quantity
     this.selectedDrug.price = drug.price
     this.setState({dialogShown: true})
-    // console.log('Changing dialog to: ', this.state.dialogShown)
   }
   hideDialog(){
     this.setState({dialogShown: false})

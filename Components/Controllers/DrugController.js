@@ -10,15 +10,12 @@ var DrugController = {
     {icon:require('../../Images/Drugs/test.png'), name:'Kat', quantity:234, price:10700, arrow:require('../../Images/Drugs/test-arrow.png')},
   ],
 
-  setQuantityToBuy(amount){
-    console.log('AMOUNT I BOUGHT: ', amount)
-  },
+  quantityBought: 0,
+  totalPrice: 0,
 
-  buyDrug(i, quantityBought){
-    //rest the amount of drug bought
-    this.drugList[i].price = (this.drugList[i].quantity - quantityBought)
-
-    //add it to the stash
+  buyDrug(index, totalQuantity, totalPrice){
+    this.drugList[index].quantity = this.drugList[index].quantity - totalQuantity
+    console.log(this.drugList)
   },
 }
 
